@@ -1,0 +1,38 @@
+@use "variable" as var;
+@use '../../../node_modules/sass-mq/mq' with (
+  $mq-breakpoints: var.$mq-breakpoints,
+);
+
+// 
+// Base
+//
+
+html {
+  font-size: var.$font-size-root;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var.$font-family-base;
+  font-size: var.$font-size-base;
+  line-height: var.$line-height-base;
+  color: var.$text-color;
+  background-color: var.$body-bg-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var.$link-color;
+  &:hover,
+  &:focus {
+    color: var.$link-hover-color;
+  }
+}
+
+h1 {
+  font-size: 30px;
+  @include mq.mq(tab) {
+    font-size: 100px;
+  }
+}
