@@ -1,0 +1,9 @@
+@use "sass:math";
+
+//
+// Mixin
+//
+
+@function get-vw($target-px, $target-vw) {
+  @return math.div($target-px, math.div($target-vw, 100)) * 1vw;
+}

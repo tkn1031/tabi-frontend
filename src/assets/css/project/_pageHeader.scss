@@ -1,0 +1,59 @@
+@use "../foundation" as f;
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  &__title {
+    margin-right: auto;
+  }
+}
+
+.pageHeader-logo {
+  font-family: f.$font-family-brandon-grotesque;
+  font-size: 2rem;
+  font-weight: 600;
+  > span {
+    color: var(--color-brand);
+  }
+}
+
+.pageHeader-navList {
+  display: flex;
+  column-gap: 2.4rem;
+  &__link {
+    position: relative;
+    margin-right: -0.1em;
+    font-family: var(--font-family-base-en);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      left: -5%;
+      width: 110%;
+      height: 1px;
+      background-color: currentColor;
+      transition: transform .2s;
+      transform: scale(0, 1);
+      transform-origin: right top;        
+    }
+    &.nuxt-link-exact-active {
+      &::before {
+        transform: scale(1, 1);
+      }
+    }
+    @media (hover: hover) {
+      &:hover {
+        color: currentColor;
+        text-decoration: none;
+        &::before {
+          transform: scale(1, 1);
+          transform-origin: left top;
+        }
+      }
+    }
+  }
+}

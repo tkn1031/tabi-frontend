@@ -1,0 +1,12 @@
+@use "../foundation" as f;
+
+.c-icon-arrowLineRight {
+  fill: var(--color-base);
+}
+
+.c-icon-arrowUp {
+  stroke: var(--color-base);
+  &--white {
+    stroke: var(--color-white);
+  }
+}

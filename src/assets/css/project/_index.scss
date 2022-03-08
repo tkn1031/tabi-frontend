@@ -1,0 +1,19 @@
+@use "../foundation" as f;
+@use "pageHeader";
+@use "pageFooter";
+@use "hero";
+@use "top";
+
+.current-page {
+  position: fixed;
+  left: 2%;
+  top: 50%;
+  z-index: 2;
+  margin-right: -0.1em;
+  font-family: var(--font-family-base-en);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  transform: rotate(-90deg);
+  transform-origin: left top;
+}

@@ -1,0 +1,16 @@
+//
+// Media Query
+//
+
+$breakpoints: (
+  tab: 600px,
+  pc: 1025px, // タブレット横 + 1px
+  pcL: 1280px
+);
+
+$breakpoints-shown: (tab,pc,pcL);
+
+@use '../../../../node_modules/sass-mq/mq' with (
+  $mq-breakpoints: $breakpoints,
+  $mq-show-breakpoints: $breakpoints-shown,
+);

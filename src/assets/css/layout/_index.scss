@@ -1,0 +1,25 @@
+@use "../foundation" as f;
+@use '../../../../node_modules/sass-mq/mq';
+@use 'bgLines';
+@use 'header';
+@use 'footer';
+
+.l-inner {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  @include mq.mq(tab) {
+    width: 80%;
+    max-width: f.$max-content-width;
+  }
+}
+
+.l-wrap {
+  overflow: hidden;
+}
+
+.l-main {
+  position: relative;
+  padding-bottom: 12rem;
+  z-index: 1;
+}

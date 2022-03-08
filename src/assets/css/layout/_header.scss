@@ -1,0 +1,26 @@
+@use "../foundation" as f;
+@use '../../../../node_modules/sass-mq/mq';
+
+.l-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  &__inner {
+    padding-right: 5vw;
+    padding-left: 5vw;
+    @include mq.mq(tab) {
+      padding: 2rem 3vw;
+      transition: 0.4s padding;
+    }
+  }
+  &.is-scroll {
+    .l-header__inner {
+      @include mq.mq(tab) {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+    }
+  }
+}

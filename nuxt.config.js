@@ -4,6 +4,8 @@ export default {
 
   srcDir: 'src/',
 
+  ssr: true,
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'tabi',
@@ -17,7 +19,8 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: 'img/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://use.typekit.net/knt2tcd.css' }
     ]
   },
 
@@ -28,6 +31,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '@/plugins/swiper', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

@@ -1,0 +1,98 @@
+@use "sass:math";
+@use "../foundation" as f;
+@use 'icon';
+@use 'button';
+@use 'card';
+@use 'animation';
+
+.c-copyright {
+  line-height: 1;
+  font-family: var(--font-family-base-en);
+  font-size: 1rem;
+  color: rgba(var(--color-white-rgb), .5);
+}
+
+.c-icon-plus {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: scale(1, 0);
+    transform-origin: 0 0;
+  }
+  50% {
+    transform: scale(1, 1);
+    transform-origin: 0 0;
+  }
+  50.1% {
+    transform: scale(1, 1);
+    transform-origin: 0 100%;
+  }
+  100% {
+    transform: scale(1, 0);
+    transform-origin: 0 100%;
+  }
+}
+.c-scrolldown {
+  display: block;
+  width: 2px;
+  height: 4rem;
+  background-color: rgba(var(--color-black-rgb), .1);
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--color-black-rgb), 1);
+    animation: scrollDown 1.7s cubic-bezier(1, 0, 0, 1) infinite;
+  }
+}
+
+.c-blog-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px 6.5%;
+  justify-content: space-between;
+  &__item {
+    flex-basis: 29%;
+    &:nth-of-type(3n-1) {
+      margin-top: 40px;
+    }
+    &:nth-of-type(3n) {
+      margin-top: 80px;
+    }
+  }
+}
+
+.c-movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &__item {
+    position: relative;
+    flex-basis: 48%;
+    margin-bottom: 60px;
+    &:nth-of-type(2n) {
+      transform: translateY(60px);
+    }
+  }
+}

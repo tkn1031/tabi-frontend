@@ -1,0 +1,18 @@
+@use "mixin" as m;
+
+//
+// Variables
+//
+
+// Typography
+//
+
+$font-size: 0.625rem !default; // 10px
+$font-size-tab: clamp(0.625rem, calc(0.625rem + ((1vw - 0.375rem) * 1.4151)), 1rem); // 10px to 16px between vw = 600px and 1024px
+$font-size-pc: clamp(0.875rem, calc(0.875rem + ((1vw - 0.640625rem) * 0.6515)), 1.5rem); // 10px to 24px between vw = 1025px and 2560px
+$line-height-base: 1.5 !default;
+
+// Size
+//
+
+$max-content-width: 1600px;
