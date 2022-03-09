@@ -4,8 +4,8 @@
 
 $gap-between-section: 6rem;
 $gap-intro-section-upper: 12rem;
-$font-size-heading-jp: 2.4rem;
-$font-size-heading-hand-en: 7.6rem;
+$font-size-heading-jp: 2rem;
+$font-size-heading-hand-en: 7rem;
 
 %section-header {
   position: relative;
@@ -14,9 +14,9 @@ $font-size-heading-hand-en: 7.6rem;
 }
 %section-heading {
   position: relative;
-  margin-right: -0.4em;
+  margin-right: -0.3em;
   line-height: 1;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.3em;
   font-size: $font-size-heading-jp;
   font-weight: 600;
   &::before {
@@ -55,7 +55,7 @@ $font-size-heading-hand-en: 7.6rem;
 
 .top-more-button {
   margin-top: 1.2em;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 
@@ -95,7 +95,7 @@ $font-size-heading-hand-en: 7.6rem;
   }
   &__body {
     width: percentage(math.div(8, 9));
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     font-weight: 600;
     line-height: 2.5;
   }
@@ -111,7 +111,7 @@ $font-size-heading-hand-en: 7.6rem;
   font-size: $font-size-heading-hand-en;
   font-family: f.$font-family-hand-en;
   font-weight: 500;
-  color: rgba(var(--color-brand-rgb), 1);
+  color: rgba(var(--color-theme02-rgb), 1);
   // text-transform: lowercase;
 }
 .top-intro-bgUnion {
@@ -178,7 +178,7 @@ $font-size-heading-hand-en: 7.6rem;
   @extend %section-heading-en;
   right: 0;
   transform-origin: right bottom;
-  transform: translate(75%, -15%) rotate(10deg);
+  transform: translate(75%, -35%) rotate(10deg);
 }
 .top-blog-toList {
   margin-top: 0px;
@@ -241,7 +241,7 @@ $font-size-heading-hand-en: 7.6rem;
   @extend %section-heading-en;
   left: 0;
   transform-origin: left bottom;
-  transform: translate(-0.5em, -45%) rotate(-10deg);
+  transform: translate(-0.75em, -65%) rotate(-10deg);
 }
 .top-photo-detailHeadingList {
   position: relative;
@@ -286,7 +286,7 @@ $font-size-heading-hand-en: 7.6rem;
     transition: transform 0.3s linear;
   }
   &__heading {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 600;
   }
   &__date {
@@ -566,7 +566,7 @@ $font-size-heading-hand-en: 7.6rem;
   @extend %section-heading-en;
   right: 0;
   transform-origin: right bottom;
-  transform: translate(75%, -15%) rotate(10deg);
+  transform: translate(75%, -35%) rotate(10deg);
 }
 .top-movie-list {
   padding-right: 0.75vw;

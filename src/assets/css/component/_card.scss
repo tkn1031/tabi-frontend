@@ -1,7 +1,7 @@
 @use "sass:math";
 @use "../foundation" as f;
 
-$font-size-article-heading: 1.3rem;
+$font-size-article-heading: 1.1rem;
 $font-size-article-time: 0.8rem;
 
 
@@ -21,6 +21,8 @@ $font-size-article-time: 0.8rem;
     }
   }
   &__header {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
     margin-bottom: 1em;
     font-size: $font-size-article-heading;
   }
@@ -71,8 +73,9 @@ $font-size-article-time: 0.8rem;
     position: relative;
     float: right;
     padding-left: 1.5em;
+    padding-right: 0.25rem;
     text-align: right;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 600;
     &::before {
       content: "";      
@@ -268,10 +271,11 @@ $font-size-article-time: 0.8rem;
     }
   }
   &__content {
-    padding-left: 1rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
   }
   &__heading {
-    margin-bottom: 0.75em;
+    margin-bottom: 1em;
     font-size: $font-size-article-heading;
     font-weight: 600;
   }
@@ -282,14 +286,14 @@ $font-size-article-time: 0.8rem;
     &__date {
       display: block;
       margin-right: -0.1em;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       letter-spacing: 0.1em;
     }
     &__place {
       position: relative;
       padding-left: 1em;
       margin-left: 0.8em;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       &::before {
         content: "/";
         position: absolute;

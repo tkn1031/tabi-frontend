@@ -11,7 +11,7 @@
 
 .pageHeader-logo {
   font-family: f.$font-family-brandon-grotesque;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 600;
   > span {
     color: var(--color-brand);
@@ -24,10 +24,10 @@
   &__link {
     position: relative;
     margin-right: -0.1em;
+    letter-spacing: 0.1em;
     font-family: var(--font-family-base-en);
     font-size: 1rem;
     font-weight: 500;
-    letter-spacing: 0.1em;
     &::before {
       content: '';
       position: absolute;
