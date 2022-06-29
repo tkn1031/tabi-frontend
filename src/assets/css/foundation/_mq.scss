@@ -3,12 +3,12 @@
 //
 
 $breakpoints: (
-  tab: 600px,
-  pc: 1025px, // タブレット横 + 1px
-  pcL: 1280px
+  md: 600px,
+  lg: 1025px, // タブレット横 + 1px
+  xl: 1280px
 );
 
-$breakpoints-shown: (tab,pc,pcL);
+$breakpoints-shown: (md,lg,xl);
 
 @use '../../../../node_modules/sass-mq/mq' with (
   $mq-breakpoints: $breakpoints,

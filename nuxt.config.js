@@ -4,7 +4,7 @@ export default {
 
   srcDir: 'src/',
 
-  ssr: true,
+  ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {

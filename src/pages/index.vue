@@ -1,23 +1,24 @@
 <template>
   <div>
     <div class="current-page">Home</div>
-    <TheHero :option="swiperHeroOption" :carousels="heroCarousels" />
+    <ProjectTopHeroUnit :option="swiperHeroOption" :data="heroData" />
     <section id="intro" class="top-intro-section">
-      <div class="top-intro-section-inner">
+      <div class="l-inner">
         <div class="top-intro-content">
           <div class="top-intro-content__text">
+            <p class="top-intro-catch"><span>Why</span><span>Travel?</span></p>
             <div class="top-intro-textbox">
-              <p class="c-mask top-intro-textbox__heading js-intersection">なぜ旅する？</p>
-              <p class="c-mask top-intro-textbox__body js-intersection">シンプルに面白いから。Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora id dolorem eveniet hic! Quisquam ut distinctio hic veniam ipsum excepturi deleniti minus nemo eos fugit et repellat, sint ipsam modi?</p>
+              <h2 class="js-intersection c-mask top-intro-textbox__heading"><span>旅する理由</span></h2>
+              <p class="js-intersection c-mask top-intro-textbox__body">シンプルに面白いから。Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora id dolorem eveniet hic! Quisquam ut distinctio hic veniam ipsum excepturi deleniti minus nemo eos fugit et repellat, sint ipsam modi?</p>
             </div>
           </div>
-          <div class="top-intro-content__bg">
-            <p class="top-intro-bgText">Why travel?</p>
+          <div class="top-intro-content__bgs">
+            <!-- <p class="top-intro-bgText"><span>Why</span><span>Travel?</span></p> -->
             <div class="top-intro-bgUnion">
-              <div class="c-mask top-intro-bg top-intro-bg--01 js-intersection" style="background-image: url('/img/top_bg_intro_01.jpg')"></div>
-              <div class="c-mask top-intro-bg top-intro-bg--02 js-intersection" style="background-image: url('/img/top_bg_intro_02.jpg')"></div>
+              <div class="js-intersection c-fadeInUp top-intro-bg top-intro-bg--01" style="background-image: url('/img/top_bg_intro_01.jpg')"></div>
+              <div class="js-intersection c-fadeInUp top-intro-bg top-intro-bg--02" style="background-image: url('/img/top_bg_intro_02.jpg')"></div>
             </div>
-            <div class="c-mask top-intro-bg top-intro-bg--03 js-intersection" style="background-image: url('/img/top_bg_intro_03.jpg')"></div>
+            <div class="js-intersection c-fadeInUp top-intro-bg top-intro-bg--03" style="background-image: url('/img/top_bg_intro_03.jpg')"></div>
           </div>
         </div>
       </div>
@@ -25,128 +26,74 @@
     <!-- /#intro -->
 
     <section id="blog" class="top-blog-section">
-      <div class="top-blog-section-inner">
+      <div class="l-inner">
         <div class="top-blog-section-header">
-          <h2 class="c-mask top-blog-heading js-intersection">旅のブログ</h2>
-          <div class="top-blog-heading-en">Blog</div>
-          <nuxt-link class="c-mask c-line-button top-more-button js-intersection" to="/blog/">View list<span class="c-line-button__icon"><svg class="c-icon-arrowLineRight"><use xlink:href="#arrowLineRight"></use></svg></span></nuxt-link>
+          <h2 class="js-intersection c-mask top-blog-heading"><span>ブログ<span class="top-blog-heading__verb">を読む</span></span></h2>
+          <div class="top-blog-heading-en"><span>Read Blog</span></div>
         </div>
         <div class="top-blog-content">
-          <div class="c-blog-list top-blog-list">
-            <article v-for="(blog, idx) in blogList" :key="idx" class="c-blog-list__item">
-              <a href="#" class="c-blog-card c-fadeInUp js-intersection">
-                <div class="c-blog-card__header">
-                  <time class="c-blog-card__date" :datetime="blog.date">{{ blog.date }}</time>
-                  <h3 class="c-blog-card__heading">{{ blog.title }}</h3>
+          <div class="c-list-blog top-blog-list">
+            <article v-for="(blog, idx) in blogList" :key="idx" class="c-list-blog__item top-blog-list__item">
+              <a href="#" class="js-intersection c-fadeInUp c-card-blog top-blog-card" :class="{'c-card-blog--reverse': idx === 1}">
+                <time class="c-card-blog__date" :datetime="blog.date">{{ blog.date }}</time>
+                <div class="c-card-blog__imgWrap">
+                  <img class="c-card-blog__imgWrap__img" :src="blog.imgUrl">
                 </div>
-                <div class="c-blog-card__content">
-                  <div class="c-blog-card__img" :class="{'c-blog-card__img--vertical' : isVerticalImage(blog.imgWidth, blog.imgHeight)}">
-                    <div class="c-blog-card__img__body" :style="{ backgroundImage: `url(${blog.imgUrl})`}"></div>
-                  </div>
-                  <div class="c-blog-card__category">{{ blog.category }}</div>
+                <div class="c-card-blog__content">
+                  <h3 class="c-card-blog__heading">{{ blog.title }}</h3>
+                  <p class="c-card-blog__body">{{ blog.body }}</p>
+                  <ul class="c-card-blog__tags">
+                    <li v-for="(tag, idx2) in blog.tags" :key="idx2" class="c-card-blog__tags__item"><span>{{ tag }}</span></li>
+                  </ul>
                 </div>
               </a>
             </article>
+          </div>
+          <div class="top-blog-more">
+            <nuxt-link class="c-button-arrow top-more-button " to="/blog/"><span class="c-button-arrow__text">ブログ一覧を見る</span><span class="c-button-arrow__icon"><svg class="c-icon-arrowRight"><use xlink:href="#arrowRight"></use></svg></span></nuxt-link>
           </div>
         </div>
       </div>
     </section>
     <!-- /#blog -->
 
-    <!-- <section id="photo" class="top-section top-section--photo">
-      <div class="top-section-photo-heading-wrap">
-        <div class="top-photo-bg-wrap">
-          <div class="c-mask top-photo-bg top-photo-bg--01 js-intersection" style="background-image: url('/img/bg_photo_01.jpg')"></div>
-          <div class="c-mask top-photo-bg top-photo-bg--02 js-intersection" style="background-image: url('/img/bg_photo_02.jpg')"></div>
-        </div>
-        <div class="c-fadeInUp top-section-heading--photo js-intersection">
-          <div class="top-section-heading__en">Photo</div>
-          <h2 class="top-section-heading__jp">旅の写真</h2>
-        </div>
-      </div>
-      <div class="top-photo-inner">
-        <div class="top-section-content top-section-content--photo">
-          <div class="top-photo-carousel-wrap">
-            <div class="c-fadeInUp top-photo-carousel-switch js-intersection">
-              <div slot="button-prev" class="swiper-button-prev"></div>
-              <div slot="button-next" class="swiper-button-next"></div>
-            </div>
-            <swiper
-              v-show="showPhoto"
-              ref="photoCarousel"
-              class="swiper top-photo-carousel js-intersection"
-              :options="photoSwiperOption"
-              @ready="initphoto"
-            >
-              <swiper-slide v-for="(carousel, idx) in photoCarousels" :key="idx" class="top-photo-carousel__item">
-                <a class="c-photo-card" href="#">
-                  <div class="c-photo-card__img">
-                    <div class="c-photo-card__img__body" :style="{ backgroundImage: `url(${carousel.imgUrl})`}"></div>
-                  </div>
-                  <div class="c-photo-card__content">
-                    <h3 class="c-photo-card__heading">{{ carousel.title }}</h3>
-                    <time class="c-photo-card__date" :datetime="carousel.visitYear">{{ carousel.visitYear }}</time>
-                  </div>
-                  <div class="c-photo-card__country">{{ carousel.countryEn }}</div>
-                </a>
-              </swiper-slide>
-            </swiper>
-          </div>
-          <div class="top-photo-toList">
-            <a class="c-fadeInUp c-line-button top-more-button js-intersection" href="#">View List</a>
-          </div>
-        </div>
-      </div>
-    </section> -->
     <section id="photo" class="top-photo-section">
-      <div class="top-photo-section-inner">
-        <div class="top-photo-contentContainer">
-          <div class="top-photo-contentContainer__text">
-            <div class="top-photo-section-header">
-              <h2 class="c-mask top-photo-heading js-intersection">旅の写真</h2>
-              <div class="top-photo-heading-en">Photo</div>
-              <nuxt-link class="c-mask c-line-button top-more-button js-intersection" to="/photo/">View list<span class="c-line-button__icon"><svg class="c-icon-arrowLineRight"><use xlink:href="#arrowLineRight"></use></svg></span></nuxt-link>
-            </div>
-            <ul class="top-photo-detailHeadingList">
-              <li v-for="(carousel, idx) in photoCarousels" :key="idx" class="top-photo-detailHeadingList__item">
-                <a class="top-photo-detailText" href="#" :class="{'is-active' : idx === activePhotoCarouselIndex}" @mouseover="changeSlideTo(idx, swiperPhotoOption.speed)">
-                  <h3 class="top-photo-detailText__heading">{{ carousel.title }}</h3>
-                  <time class="top-photo-detailText__date">{{ carousel.visitYear }}</time>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="top-photo-contentContainer__image">
-            <TopPhotoCarousel id="photoCarousel" ref="photoCarousel" :option="swiperPhotoOption" :carousels="photoCarousels" @getActivePhotoCarouselIndex="setActivePhotoCarouselIndex" />
-          </div>
+      <div class="l-inner">
+        <div class="top-photo-section-header">
+          <h2 class="js-intersection c-mask top-photo-heading"><span>写真<span class="top-blog-heading__verb">を見る</span></span></h2>
+          <div class="top-photo-heading-en"><span>View Photo</span></div>
+        </div>
+        <div class="top-photo-content">
+          <ul class="c-list-linkPhoto">
+            <li v-for="photo in photos" :key="photo.id" class="c-list-linkPhoto__item">
+              <nuxt-link class="c-link-photo" :to="`/photo/${photo.id}`">
+                <div class="c-link-photo__content">
+                  <span class="c-link-photo__year">{{ photo.visitYear }}</span>
+                  <h3 class="c-link-photo__heading"><span class="js-intersection c-mask c-link-photo__heading__large" :style="`background-image: url(${photo.imgUrl})`">{{ photo.title }}</span><span class="js-intersection c-mask c-link-photo__heading__small" :style="`background-image: url(${photo.imgUrl})`">{{ photo.visit | stringJoin('／') }}</span></h3>
+                </div>
+              </nuxt-link>
+            </li>
+          </ul>
+        </div>
+        <div class="top-photo-more">
+          <nuxt-link class="c-button-arrow top-more-button " to="/photo/"><span class="c-button-arrow__text">写真一覧を見る</span><span class="c-button-arrow__icon"><svg class="c-icon-arrowRight"><use xlink:href="#arrowRight"></use></svg></span></nuxt-link>
         </div>
       </div>
     </section>
     <!-- /#photo -->
 
     <section id="movie" class="top-movie-section">
-      <div class="top-movie-section-inner">
+      <div class="l-inner">
         <div class="top-movie-section-header">
-          <h2 class="c-mask top-movie-heading js-intersection">旅の動画</h2>
-          <div class="top-movie-heading-en">Movie</div>
-          <nuxt-link class="c-mask c-line-button top-more-button js-intersection" to="/movie/">View list<span class="c-line-button__icon"><svg class="c-icon-arrowLineRight"><use xlink:href="#arrowLineRight"></use></svg></span></nuxt-link>
+          <h2 class="js-intersection c-mask top-movie-heading"><span>動画<span class="top-blog-heading__verb">を見る</span></span></h2>
+          <div class="top-movie-heading-en"><span>Watch Movie</span></div>
         </div>
         <div class="top-movie-content">
-          <div class="c-movie-list top-movie-list">
-            <div v-for="(movie, idx) in movieList" :key="idx" class="c-movie-list__item">
-              <a :href="movie.url" class="c-movie-card c-fadeInUp js-intersection">
-                <div class="c-movie-card__img">
-                  <div class="c-movie-card__img__body" :style="{ backgroundImage: `url(${movie.imgUrl})`}"></div>
-                </div>
-                <div class="c-movie-card__content">
-                  <h3 class="c-movie-card__heading">{{ movie.title }}</h3>
-                  <div class="c-movie-card__info">
-                    <time class="c-movie-card__info__date" :datetime="movie.shootingDate">{{ movie.shootingDate }}</time>
-                    <div class="c-movie-card__info__place">{{ movie.place }}</div>
-                  </div>
-                </div>
-              </a>
-            </div>
+          <div class="top-movie-carouselContainer">
+            <ProjectTopMovieCarouselUnit :option="swiperMovieOption" :data="movieList" />
+          </div>
+          <div class="top-movie-more">
+            <nuxt-link class="c-button-arrow top-more-button " to="/movie/"><span class="c-button-arrow__text">動画一覧を見る</span><span class="c-button-arrow__icon"><svg class="c-icon-arrowRight"><use xlink:href="#arrowRight"></use></svg></span></nuxt-link>
           </div>
         </div>
       </div>
@@ -156,13 +103,24 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import IntersectionObserver from '@/assets/js/modules/intersectionObserve'
+// @ts-ignore
+import IntersectionObserverWrapper from '@/assets/js/modules/intersectionObserverWrapper'
 
 export default Vue.extend({
   name: 'Index',
+  filters: {
+    // @ts-ignore
+    stringJoin(values, separator) {
+      return values.join(separator)
+    },
+    // @ts-ignore
+    leftFillNum(num, targetLength) {
+      return num.toString().padStart(targetLength, 0)
+    }
+  },
   asyncData() {
     return {
-      heroCarousels: [
+      heroData: [
         '/img/slide_01.jpg',
         '/img/slide_02.jpg',
         '/img/slide_03.jpg',
@@ -170,37 +128,43 @@ export default Vue.extend({
         '/img/slide_05.jpg',
         '/img/slide_06.jpg',
       ],
-      photoCarousels: [
+      photos: [
         {
-          id: '1',
+          id: '3',
+          entryNo: '3',
           date: '2021.01.01',
           visitYear: '2021',
           title: 'インド',
           countryJp: 'インド',
           countryEn: 'India',
           countryCode: 'THA',
+          visit: ['コルカタ'],
           imgUrl: '/img/img_photo_thumb_01.jpg',
           imgAlt: 'サムネ01'
         },
         {
           id: '2',
+          entryNo: '2',
           date: '2021.01.01',
           visitYear: '2021',
           title: 'スリランカ',
           countryJp: 'スリランカ',
           countryEn: 'Srilanka',
           countryCode: 'KHM',
+          visit: ['キャンディ', 'コロンボ', 'トリンコマリー'],
           imgUrl: '/img/img_photo_thumb_02.jpg',
           imgAlt: 'サムネ02'
         },
         {
-          id: '3',
+          id: '1',
+          entryNo: '1',
           date: '2021.01.01',
           visitYear: '2021',
           title: 'ラオス',
           countryJp: 'ラオス',
           countryEn: 'Laos',
           countryCode: 'VNM',
+          visit: ['ビエンチャン', 'ルアンパバーン'],
           imgUrl: '/img/img_photo_thumb_03.jpg',
           imgAlt: 'サムネ03'
         },
@@ -211,6 +175,7 @@ export default Vue.extend({
           countryJp: '沖縄・石垣島',
           countryEn: 'Japan',
           countryCode: 'IND',
+          visit: ['竹富島', '小浜島'],
           imgUrl: '/img/img_photo_thumb_04.jpg',
           imgAlt: 'サムネ04'
         },
@@ -221,24 +186,16 @@ export default Vue.extend({
           countryJp: 'トルコ',
           countryEn: 'Turkey',
           countryCode: 'NPL',
+          visit: ['イスタンブール', 'アンカラ', 'カッパドキア'],
           imgUrl: '/img/img_photo_thumb_05.jpg',
           imgAlt: 'サムネ05'
         },
-        // {
-        //   date: '2021.01.01',
-        //   visitYear: '2021',
-        //   title: '世界最大の鮫に出会うために',
-        //   countryJp: 'フィリピン',
-        //   countryEn: 'Philippines',
-        //   countryCode: 'PHL',
-        //   imgUrl: '/img/img_photo_thumb_06.jpg',
-        //   imgAlt: 'サムネ06'
-        // },
       ],
       blogList: [
         {
-          date: '2022.01.10',
+          date: '2022.1.10',
           category: 'フィリピン',
+          tags: ['旅ログ', 'フィリピン'],
           title: 'フィリピンへジンベイザメに会いに行ってきたよー',
           body: 'テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります...',
           imgUrl: '/img/img_blog_01.jpg',
@@ -247,8 +204,9 @@ export default Vue.extend({
           imgHeight: '300',
         },
         {
-          date: '2022.01.10',
+          date: '2022.1.10',
           category: 'モロッコ',
+          tags: ['旅ログ', 'モロッコ'],
           title: '初めてのアフリカ',
           body: 'テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります...',
           imgUrl: '/img/img_blog_04.jpg',
@@ -257,8 +215,9 @@ export default Vue.extend({
           imgHeight: '400',
         },
         {
-          date: '2022.01.10',
+          date: '2022.1.10',
           category: 'その他',
+          tags: ['お知らせ'],
           title: 'サイトを公開しました',
           body: 'テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります...',
           imgUrl: '/img/img_blog_03.jpg',
@@ -269,9 +228,9 @@ export default Vue.extend({
       ],
       movieList: [
         {
-          shootingDate: '2020.01.01',
+          shootingDate: '2020.1.1',
           place: 'ニューヨーク・タイムズスクエア',
-          title: 'ニューヨーク年越し',
+          title: 'ニューヨーク年越し1',
           url: 'https://youtu.be/I5Ba8-33vPY',
           imgUrl: '/img/img_movie_01.jpg',
           imgAlt: '動画01',
@@ -279,9 +238,39 @@ export default Vue.extend({
           imgHeight: '900',
         },
         {
-          shootingDate: '2020.01.01',
+          shootingDate: '2020.1.1',
           place: 'ニューヨーク・タイムズスクエア',
-          title: 'ニューヨーク年越し',
+          title: 'ニューヨーク年越し2',
+          url: 'https://youtu.be/I5Ba8-33vPY',
+          imgUrl: '/img/img_movie_01.jpg',
+          imgAlt: '動画02',
+          imgWidth: '1600',
+          imgHeight: '900',
+        },
+        {
+          shootingDate: '2020.1.1',
+          place: 'ニューヨーク・タイムズスクエア',
+          title: 'ニューヨーク年越し3',
+          url: 'https://youtu.be/I5Ba8-33vPY',
+          imgUrl: '/img/img_movie_01.jpg',
+          imgAlt: '動画02',
+          imgWidth: '1600',
+          imgHeight: '900',
+        },
+        {
+          shootingDate: '2020.1.1',
+          place: 'ニューヨーク・タイムズスクエア',
+          title: 'ニューヨーク年越し4',
+          url: 'https://youtu.be/I5Ba8-33vPY',
+          imgUrl: '/img/img_movie_01.jpg',
+          imgAlt: '動画02',
+          imgWidth: '1600',
+          imgHeight: '900',
+        },
+        {
+          shootingDate: '2020.1.1',
+          place: 'ニューヨーク・タイムズスクエア',
+          title: 'ニューヨーク年越し5',
           url: 'https://youtu.be/I5Ba8-33vPY',
           imgUrl: '/img/img_movie_01.jpg',
           imgAlt: '動画02',
@@ -295,7 +284,7 @@ export default Vue.extend({
     return {
       swiperHeroOption: {
         init: false,
-        grabCursor: true,
+        grabCursor: false,
         speed: 800,
         autoplay: {
           delay: 4000,
@@ -304,32 +293,29 @@ export default Vue.extend({
         slidesPerView: 1,
         loop: true,
       },
-      swiperPhotoOption: {
+      swiperMovieOption: {
         grabCursor: true,
-        speed: 800,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false
-        },
         slidesPerView: 1,
-        loop: true,
+        spaceBetween: '0%',
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
+          nextEl: '.top-movie-carouselUnit .swiper-button-next',
+          prevEl: '.top-movie-carouselUnit .swiper-button-prev'
         },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
+        breakpoints: {
+          600: {
+            slidesPerView: 1.25,
+          }
         }
       },
-      activePhotoCarouselIndex: 0,
     }
   },
   mounted() {
-    const io = new IntersectionObserver('.js-intersection', {
-      root: null,
-      rootMargin: '-60px 0px',
-      threshold: 0.3
+    const io = new IntersectionObserverWrapper({
+      option: {
+        root: null,
+        rootMargin: '0px 0px -20% 0px',
+        threshold: 0
+      },
     })
   },
   methods: {
@@ -342,24 +328,6 @@ export default Vue.extend({
     isVerticalImage(width: number, height: number) {
       return width / height < 1
     },
-
-    /**
-     * 指定したインデックスのスライドに遷移する
-     * @param {Number} index インデックス
-     * @param {Number} speed 遷移速度(ms)
-     */
-    changeSlideTo(index: number, speed: number) {
-      // @ts-ignore
-      this.$refs.photoCarousel.swiper.slideToLoop(index, speed)
-    },
-
-    /**
-     * フォトカルーセルのアクティブなインデックスをデータにセットする
-     * @param {Number} index インデックス
-     */
-    setActivePhotoCarouselIndex(index: number) {
-      this.activePhotoCarouselIndex = index
-    }
   }
 })
 </script>

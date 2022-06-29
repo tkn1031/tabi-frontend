@@ -1,50 +1,60 @@
 @use "../foundation" as f;
+@use '../../../../node_modules/sass-mq/mq';
+
+%bg-line {
+  width: 1px;
+  height: 100%;
+  background-color: var(--color-bg-line);
+}
 
 .l-bg-lines {
   position: fixed;
   top: 0;
-  left: 0;
-  z-index: 0;
-  width: 100%;
+  left: 50%;
+  z-index: -1;
+  transform: translateX(-50%);
+  width: f.$content-width-sm;
   height: 100%;
+  @include mq.mq(lg) {
+    width: f.$content-width-lg;
+    max-width: f.$max-content-width;
+  }
   &__line01 {
+    @extend %bg-line;
     position: absolute;
     top: 0;
-    left: 10%;
-    width: 1px;
-    height: 100%;
-    background-color: var(--color-bg-line);
+    left: 0;
   }
   &__line02 {
+    @extend %bg-line;
     position: absolute;
     top: 0;
-    left: 30%;
-    width: 1px;
-    height: 100%;
-    background-color: var(--color-bg-line);
+    left: 25%;
+    display: none;
+    @include mq.mq(lg) {
+      display: block;
+    }
   }
   &__line03 {
+    @extend %bg-line;
     position: absolute;
     top: 0;
     left: 50%;
-    width: 1px;
-    height: 100%;
-    background-color: var(--color-bg-line);
   }
   &__line04 {
+    @extend %bg-line;
     position: absolute;
     top: 0;
-    left: 70%;
-    width: 1px;
-    height: 100%;
-    background-color: var(--color-bg-line);
+    left: 75%;
+    display: none;
+    @include mq.mq(lg) {
+      display: block;
+    }
   }
   &__line05 {
+    @extend %bg-line;
     position: absolute;
     top: 0;
-    left: 90%;
-    width: 1px;
-    height: 100%;
-    background-color: var(--color-bg-line);
+    right: 0;
   }
 }

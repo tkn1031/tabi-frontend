@@ -1,19 +1,24 @@
 @use "../foundation" as f;
-@use "pageHeader";
-@use "pageFooter";
-@use "hero";
+@use '../../../../node_modules/sass-mq/mq';
 @use "top";
+@use "topHeroUnit";
+@use "topMovieCarouselUnit";
 
 .current-page {
   position: fixed;
-  left: 2%;
-  top: 50%;
+  top: 25%;
+  left: 3vw;
   z-index: 2;
+  transform: rotate(-90deg);
+  transform-origin: left center;
   margin-right: -0.1em;
-  font-family: var(--font-family-base-en);
-  font-size: 1rem;
   letter-spacing: 0.1em;
   line-height: 1;
-  transform: rotate(-90deg);
-  transform-origin: left top;
+  font-family: var(--font-family-base-en);
+  font-size: 1rem;
+  color: var(--color-white);
+  mix-blend-mode: difference;
+  @include mq.mq(lg) {
+    top: 50%;
+  }
 }

@@ -5,11 +5,10 @@
 @use 'footer';
 
 .l-inner {
-  width: 90%;
-  margin-right: auto;
-  margin-left: auto;
-  @include mq.mq(tab) {
-    width: 80%;
+  margin-inline: auto;
+  width: f.$content-width-sm;
+  @include mq.mq(lg) {
+    width: f.$content-width-lg;
     max-width: f.$max-content-width;
   }
 }
@@ -19,7 +18,8 @@
 }
 
 .l-main {
-  position: relative;
-  padding-bottom: 12rem;
-  z-index: 1;
+  padding-bottom: 16rem;
+  @include mq.mq(lg) {
+    padding-bottom: 20rem;
+  }
 }

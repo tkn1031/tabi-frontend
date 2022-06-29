@@ -1,18 +1,12 @@
 <template>
   <div class="l-wrap">
-    <SvgInclude />
-    <div class="l-bg-lines">
-      <div class="l-bg-lines__line01"></div>
-      <div class="l-bg-lines__line02"></div>
-      <div class="l-bg-lines__line03"></div>
-      <div class="l-bg-lines__line04"></div>
-      <div class="l-bg-lines__line05"></div>
-    </div>
-    <TheHeader />
+    <ComponentSvgInclude />
+    <LayoutBgLine />
+    <LayoutHeader />
     <main class="l-main">
       <Nuxt />
     </main>
-    <TheFooter />
+    <LayoutFooter />
   </div>
 </template>
 

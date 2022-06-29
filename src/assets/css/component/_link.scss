@@ -1,0 +1,55 @@
+@use '../../../../node_modules/sass-mq/mq';
+@use "../foundation" as f;
+
+.c-link-photo {
+  display: inline-block;
+  &:hover {
+    text-decoration: none;
+  }
+  &__content {
+    position: relative;
+    display: flex;
+  }
+  &__year {
+    margin-top: 0.75rem;
+    line-height: 1;
+    font-family: var(--font-family-base-number);
+    font-weight: 600;
+    font-size: 1rem;
+    @include mq.mq(lg) {
+      position: absolute;
+      top: 0.95rem;
+      right: 100%;
+      margin-top: 0;
+    }
+  }
+  &__heading {
+    margin-left: 1rem;
+    font-weight: 600;
+    font-size: 2.8rem;
+    @include mq.mq(lg) {
+      font-size: 3.8rem;
+    }
+    &__large {
+      margin-bottom: 0.5rem;
+      width: fit-content;
+      color: rgba(var(--color-base-rgb), 0);
+      background-position: top center;
+      background-size: cover;
+      background-clip: text;
+    }
+    &__small {
+      display: block;
+      width: fit-content;
+      font-size: 0.35em;
+      color: rgba(var(--color-base-rgb), 0);
+      background-position: bottom center;
+      background-size: cover;
+      background-clip: text;
+        // @include mq.mq(xl) {
+      //   display: inline;
+      //   margin-left: 1em;
+      // }
+    }
+  }
+}

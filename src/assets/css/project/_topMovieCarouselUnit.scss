@@ -1,0 +1,112 @@
+@use "sass:math";
+@use '../../../../node_modules/sass-mq/mq';
+@use "../foundation" as f;
+
+//
+// Top Movie Carousel Unit
+//
+
+.top-movie-carouselUnit {
+  --button-size: 4rem;
+  position: relative;
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute;
+    top: 0;
+    margin-top: calc(math.div(percentage(math.div(9, 16)), 2) - 2rem);
+    width: var(--button-size);
+    height: var(--button-size);
+    background-color: rgba(var(--color-theme03-rgb), 1);
+    transition: background-color 0.3s;
+    &::after {
+      content: '';
+      font-family: inherit;
+    }
+    @include mq.mq(md) {
+      margin-top: 0;
+    }
+    // @media (hover: hover) {
+    //   &:hover {
+    //     background-color: rgba(var(--color-theme03-rgb), 0.35);
+    //   }
+    // }
+    &.swiper-button-disabled {
+      opacity: 0.5;
+      pointer-events: auto;
+    }
+    .c-icon-arrowLeft,
+    .c-icon-arrowRight {
+      width: 30%;
+      height: 100%;
+      fill: var(--color-white);
+    }
+  }
+  .swiper-button-prev {
+    left: -4vw;
+    @include mq.mq(md) {
+      left: auto;
+      right: var(--button-size);
+    }
+  }
+  .swiper-button-next {
+    right: -4vw;
+    @include mq.mq(md) {
+      right: 0;
+    }
+  }
+  &__controller {
+    // position: absolute;
+    // top: 0;
+    // right: 0;
+    // display: flex;
+    // justify-content: space-between;
+    // margin-top: calc(math.div(percentage(math.div(9, 16)), 2) - 2rem);
+    // width: 100%;
+    @include mq.mq(lg) {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      display: flex;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+      position: absolute;
+      top: 0;
+      margin-top: calc(math.div(percentage(math.div(9, 16)), 2) - 2rem);
+      width: 4rem;
+      height: 4rem;
+      background-color: rgba(var(--color-theme03-rgb), 1);
+      transition: background-color 0.3s;
+      &::after {
+        content: '';
+        font-family: inherit;
+      }
+      @include mq.mq(lg) {
+        position: static;
+        margin-top: 0;
+      }
+      // @media (hover: hover) {
+      //   &:hover {
+      //     background-color: rgba(var(--color-theme03-rgb), 0.35);
+      //   }
+      // }
+      &.swiper-button-disabled {
+        opacity: 1;
+        background-color: rgba(var(--color-theme03-rgb), 0.35);
+        pointer-events: auto;
+      }
+      .c-icon-arrowLeft,
+      .c-icon-arrowRight {
+        width: 30%;
+        height: 100%;
+        fill: var(--color-white);
+      }
+    }
+    .swiper-button-prev {
+      left: -4vw;
+    }
+    .swiper-button-next {
+      right: -4vw;
+    }
+  }
+}

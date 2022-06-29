@@ -13,13 +13,17 @@
   }
   --font-family-base: #{f.$font-family-base};
   --font-family-base-en: #{f.$font-family-base-en};
-  --font-size: #{var.$font-size};
+  --font-family-hand-en: #{f.$font-family-hand-en};
+  --font-family-base-number: #{f.$font-family-base-number};
   --line-height-base: #{var.$line-height-base};
-  @include mq.mq(tab) {
-    --font-size: #{var.$font-size-tab};
+  @include mq.mq($until: md) {
+    --font-size: #{var.$font-size-sm};
   }
-  @include mq.mq(pc) {
-    --font-size: #{var.$font-size-pc};
+  @include mq.mq(md) {
+    --font-size: #{var.$font-size-md};
+  }
+  @include mq.mq(lg) {
+    --font-size: #{var.$font-size-lg};
   }
 }
 
@@ -31,6 +35,7 @@ html {
 
 body {
   height: 100%;
+  letter-spacing: 0.05em;
   font-family: var(--font-family-base);
   line-height: var(--line-height-base);
   color: var(--color-base);
