@@ -17,3 +17,10 @@ $line-height-base: 1.5 !default;
 $content-width-sm: 86vw;
 $content-width-lg: 80vw;
 $max-content-width: 1600px;
+
+// z-index
+//
+
+$z-index-bgLines: 0;
+$z-index-header: 99;
+$z-index-heroMask: 100;

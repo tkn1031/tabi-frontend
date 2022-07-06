@@ -4,7 +4,7 @@
       <div ref="catch" class="top-heroUnit__catch">
         <div class="top-heroUnit__catch__en">
           <div class="top-heroUnit__catchLine">
-            <div class="c-mask top-heroUnit__catchText top-heroUnit__catchText--en">Our planet is</div>
+            <div class="c-mask top-heroUnit__catchText top-heroUnit__catchText--en">The world is</div>
           </div>
           <div class="top-heroUnit__catchLine">
             <div class="c-mask top-heroUnit__catchText top-heroUnit__catchText--en">beyond our</div>
@@ -15,27 +15,28 @@
         </div>
         <div class="top-heroUnit__catch__jp">
           <div class="top-heroUnit__catchLine">
-            <div class="c-mask top-heroUnit__catchText top-heroUnit__catchText--jp">僕らの星は想像以上だ</div>
+            <div class="c-mask top-heroUnit__catchText top-heroUnit__catchText--jp">世界は想像以上だ</div>
           </div>
         </div>
       </div>
       <swiper
         ref="carousel"
         class="swiper top-heroUnit__carousel"
-        :class="{'show': show}"
         :options="option"
         @ready="ready"
         @slideChangeTransitionEnd="getActiveCarouselIndex"
       >
-        <swiper-slide v-for="(item, idx) in data" :key="idx" class="top-heroUnit__carousel__item">
-          <picture class="top-heroUnit__carousel__pic" :class="{'is-active' : idx === activeCarouselIndex}">
+        <swiper-slide v-for="(item, idx) in data" :key="idx">
+          <picture class="top-heroUnit__carousel__pic" :class="{'is-active': idx === activeCarouselIndex}">
             <source media="(min-width: 1025px)" :srcset="item">
             <img :src="item" alt="">
           </picture>
+          <!-- <div :style="`background-image: url(${item})`" class="top-heroUnit__carousel__img" :class="{'is-active': idx === activeCarouselIndex}"></div> -->
         </swiper-slide>
-        <!-- <div slot="pagination" class="swiper-pagination" /> -->
+        <div slot="pagination" class="swiper-pagination" />
       </swiper>
       <div class="top-heroUnit__progressbar"><div ref="progressbar" class="top-heroUnit__progressbar__body"></div></div>
+      <div class="top-heroUnit__carouselMask" :class="{'show': show}"></div>
     </div>
     <div class="top-heroUnit__scrolldown">
       <ComponentScrollDown />
@@ -102,11 +103,14 @@ export default Vue.extend({
         this.$refs.progressbar.style.transform = 'scaleX(1)'
       })
       // @ts-ignore
+      this.swiper.on('init', () => {
+        // @ts-ignore
+        this.show = true
+        // @ts-ignore
+        setTimeout(this.showCatch, 800)
+      })
+      // @ts-ignore
       this.swiper.init()
-      // @ts-ignore
-      this.show = true
-      // @ts-ignore
-      setTimeout(this.showCatch, 800)
     },
     getActiveCarouselIndex() {
       // @ts-ignore

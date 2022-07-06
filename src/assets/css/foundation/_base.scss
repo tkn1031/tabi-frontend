@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "variable" as var;
 @use "color" as c;
 @use "font" as f;
@@ -7,15 +8,6 @@
 // Base
 //
 :root {
-  @each $key, $color in c.$colors {
-    --color-#{$key}: #{$color};
-    --color-#{$key}-rgb: #{red($color), green($color), blue($color)};
-  }
-  --font-family-base: #{f.$font-family-base};
-  --font-family-base-en: #{f.$font-family-base-en};
-  --font-family-hand-en: #{f.$font-family-hand-en};
-  --font-family-base-number: #{f.$font-family-base-number};
-  --line-height-base: #{var.$line-height-base};
   @include mq.mq($until: md) {
     --font-size: #{var.$font-size-sm};
   }
@@ -34,6 +26,20 @@ html {
 }
 
 body {
+  @each $key, $color in c.$colors {
+    --color-#{$key}: #{$color};
+    --color-#{$key}-rgb: #{red($color), green($color), blue($color)};
+  }
+  --font-family-base: #{f.$font-family-base};
+  --font-family-base-en: #{f.$font-family-base-en};
+  --font-family-hand-en: #{f.$font-family-hand-en};
+  --font-family-base-number: #{f.$font-family-base-number};
+  --line-height-base: #{var.$line-height-base};
+  --color-base: #{map.get(c.$colors, base-light)};
+  --color-base-rgb: #{red(map.get(c.$colors, base-light)), green(map.get(c.$colors, base-light)), blue(map.get(c.$colors, base-light))};
+  --color-body:  #{map.get(c.$colors, body-light)};
+  --color-bg-line:  #{map.get(c.$colors, bg-line-light)};
+
   height: 100%;
   letter-spacing: 0.05em;
   font-family: var(--font-family-base);
@@ -42,14 +48,21 @@ body {
   background-color: var(--color-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: color 0.8s, background-color 0.8s;
+  &.theme-black {
+    --color-base: #{map.get(c.$colors, base-dark)};
+    --color-base-rgb: #{red(map.get(c.$colors, base-dark)), green(map.get(c.$colors, base-dark)), blue(map.get(c.$colors, base-dark))};
+    --color-body:  #{map.get(c.$colors, body-dark)};
+    --color-bg-line:  #{map.get(c.$colors, bg-line-dark)};
+  }
 }
 
 a {
-  color: var(--color-link);
+  color: currentColor;
   text-decoration: none;
   &:hover,
   &:focus {
-    color: var(--color-link-hover);
+    color: currentColor;
   }
   &:hover {
     cursor: pointer;

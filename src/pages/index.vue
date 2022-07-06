@@ -13,7 +13,6 @@
             </div>
           </div>
           <div class="top-intro-content__bgs">
-            <!-- <p class="top-intro-bgText"><span>Why</span><span>Travel?</span></p> -->
             <div class="top-intro-bgUnion">
               <div class="js-intersection c-fadeInUp top-intro-bg top-intro-bg--01" style="background-image: url('/img/top_bg_intro_01.jpg')"></div>
               <div class="js-intersection c-fadeInUp top-intro-bg top-intro-bg--02" style="background-image: url('/img/top_bg_intro_02.jpg')"></div>
@@ -25,7 +24,7 @@
     </section>
     <!-- /#intro -->
 
-    <section id="blog" class="top-blog-section">
+    <section id="blog" class="js-section-blog top-blog-section">
       <div class="l-inner">
         <div class="top-blog-section-header">
           <h2 class="js-intersection c-mask top-blog-heading"><span>ブログ<span class="top-blog-heading__verb">を読む</span></span></h2>
@@ -57,7 +56,7 @@
     </section>
     <!-- /#blog -->
 
-    <section id="photo" class="top-photo-section">
+    <section id="photo" class="js-section-photo top-photo-section">
       <div class="l-inner">
         <div class="top-photo-section-header">
           <h2 class="js-intersection c-mask top-photo-heading"><span>写真<span class="top-blog-heading__verb">を見る</span></span></h2>
@@ -82,7 +81,7 @@
     </section>
     <!-- /#photo -->
 
-    <section id="movie" class="top-movie-section">
+    <section id="movie" class="js-section-movie top-movie-section">
       <div class="l-inner">
         <div class="top-movie-section-header">
           <h2 class="js-intersection c-mask top-movie-heading"><span>動画<span class="top-blog-heading__verb">を見る</span></span></h2>
@@ -292,6 +291,11 @@ export default Vue.extend({
         },
         slidesPerView: 1,
         loop: true,
+        preloadImages: true,
+        pagination: {
+          el: '.top-heroUnit .swiper-pagination',
+          clickable: true
+        }
       },
       swiperMovieOption: {
         grabCursor: true,
@@ -310,11 +314,59 @@ export default Vue.extend({
     }
   },
   mounted() {
-    const io = new IntersectionObserverWrapper({
+    const io1 = new IntersectionObserverWrapper({
       option: {
         root: null,
         rootMargin: '0px 0px -20% 0px',
         threshold: 0
+      },
+    })
+    const io2 = new IntersectionObserverWrapper({
+      targetSelector: '.js-section-blog',
+      option: {
+        root: null,
+        rootMargin: '-70% 0px 0px 0px',
+        threshold: 0
+      },
+      isIntersectingCallback: () => {
+        const body = document.querySelector('body')
+        // @ts-ignore
+        if (body.classList.contains('theme-black')) {
+          // @ts-ignore
+          body.classList.remove('theme-black')
+        }
+      },
+    })
+    const io3 = new IntersectionObserverWrapper({
+      targetSelector: '.js-section-photo',
+      option: {
+        root: null,
+        rootMargin: '0px 0px -30% 0px',
+        threshold: 0
+      },
+      isIntersectingCallback: () => {
+        const body = document.querySelector('body')
+        // @ts-ignore
+        if (!body.classList.contains('theme-black')) {
+          // @ts-ignore
+          body.classList.add('theme-black')
+        }
+      },
+    })
+    const io4 = new IntersectionObserverWrapper({
+      targetSelector: '.js-section-movie',
+      option: {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0
+      },
+      isIntersectingCallback: () => {
+        const body = document.querySelector('body')
+        // @ts-ignore
+        if (!body.classList.contains('theme-black')) {
+          // @ts-ignore
+          body.classList.add('theme-black')
+        }
       },
     })
   },

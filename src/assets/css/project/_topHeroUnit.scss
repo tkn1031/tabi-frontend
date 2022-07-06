@@ -19,7 +19,7 @@
     left: 0;
     width: 10vw;
     height: 100%;
-    background-color: var(--color-body);
+    background-color: var(--color-body-light);
     @include mq.mq(md) {
       width: 20vw;
     }
@@ -50,11 +50,11 @@
       margin-top: 3rem;
     }
   }
-  &__catchLine {
-    &:not(:last-child) {
-      margin-bottom: 0.2rem;
-    }
-  }
+  // &__catchLine {
+  //   &:not(:last-child) {
+  //     margin-bottom: 0.2rem;
+  //   }
+  // }
   &__catchText {
     display: inline-block;
     line-height: 1;
@@ -82,54 +82,39 @@
     position: relative;
     width: 100%;
     height: 100%;
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 11;
-      transform-origin: right center;
-      transition: transform .8s cubic-bezier(.86,0,.07,1);
-      display: block;
-      width: 100%;
-      height: 100%;
-      background-color: var(--color-black);
-    }
-    &.show {
-      &::before {
-        transform: scale(0, 1);
-      }
-    }
+    // pictureの場合
+    // Chromeで初期表示がもたつく
     &__pic {
       display: block;
       width: 110%;
       &.is-active {
         animation: heroMove 6s linear forwards;
       }
-      img {
+      > img {
         width: 100%;
-        aspect-ratio: 7 / 8;
+        aspect-ratio: 11 / 14;
         object-fit: cover;
         @include mq.mq(lg) {
           height: 100dvh;
           height: 100vh;
+          min-height: 700px;
+          aspect-ratio: auto;
         }
       }
     }
-  }
-  &__scrolldown {
-    position: absolute;
-    bottom: 0;
-    right: 7vw;
-    z-index: 3;
-    width: 2px;
-    height: 5rem;
-    @include mq.mq(lg) {
-      // right: max(calc((100vw - f.$content-width-lg) / 2), calc(50vw - f.$max-content-width / 2));
-      right: auto;
-      left: 3vw;
-      bottom: 2rem;
-      height: 6rem;
+    // background-imageの場合
+    &__img {
+      width: 110%;
+      aspect-ratio: 11 / 14;
+      background-size: cover;
+      &.is-active {
+        animation: heroMove 6s linear forwards;
+      }
+      @include mq.mq(lg) {
+        height: 100dvh;
+        height: 100vh;
+        aspect-ratio: auto;
+      }
     }
   }
   &__progressbar {
@@ -139,7 +124,7 @@
     z-index: 2;
     display: none;
     width: 100%;
-    height: 7px;
+    height: 5px;
     background-color: rgba(var(--color-black-rgb), .5);
     &__body {
       position: absolute;
@@ -156,9 +141,70 @@
       display: block;
     }
   }
+  &__carouselMask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: f.$z-index-heroMask;
+    transform-origin: right center;
+    transition: transform .8s cubic-bezier(.86,0,.07,1);
+    display: block;
+    width: 100%;
+    aspect-ratio: 11 / 15.4;
+    background-color: var(--color-black);
+    @include mq.mq(lg) {
+      width: 100%;
+      height: 100vh;
+      aspect-ratio: auto;
+    }
+    &.show {
+      transform: scale(0, 1);
+    }
+  }
+  &__scrolldown {
+    position: absolute;
+    bottom: 0;
+    right: 7vw;
+    z-index: 3;
+    width: 2px;
+    height: 5rem;
+    @include mq.mq(lg) {
+      // right: max(calc((100vw - f.$content-width-lg) / 2), calc(50vw - f.$max-content-width / 2));
+      right: auto;
+      left: 3vw;
+      bottom: 2.4rem;
+      height: 6rem;
+    }
+  }
   .swiper-container {
-    height: 100%;
     margin-left: 0;
     margin-right: 0;
+    .swiper-pagination-bullets {
+      position: absolute;
+      top: 50%;
+      right: 3vw;
+      bottom: auto;
+      left: auto;
+      width: auto;
+      transform: translateY(-50%);
+      @include mq.mq(lg) {
+        right: 2vw;
+      }
+      .swiper-pagination-bullet {
+        display: block;
+        margin: 0;
+        width: 0.6rem;
+        height: 0.6rem;
+        background-color: var(--color-black);
+        opacity: 0.25;
+        &:not(:last-child) {
+          margin-bottom: 0.8rem;
+        }
+        &-active {
+          background-color: var(--color-black);
+          opacity: 1;
+        }
+      }
+    }
   }
 }

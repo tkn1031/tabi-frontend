@@ -3,18 +3,21 @@
 //
 
 $colors: (
-  'black': #181e23,
+  'black': #1e1e1e,
   'white': #f8f7f8,
   'brand': #6ca6d9,
-  'base': #181e23,
-  'link': #181e23,
-  'link-hover': #181e23,
+  'base-light': #1e1e1e,
+  'base-dark': #f8f7f8,
+  'body-light': #f8f7f8,
+  'body-dark': #1e1e1e,
+  'link': #1e1e1e,
+  'link-hover': #1e1e1e,
   'theme01': #2D4459,
   'theme02': #B3CADF,
   'theme03': #6185ad,
   'theme04': #475159,
   'theme05': #537FA6,
   'accent01': #e0d87d,
-  'body': #f8f7f8,
-  'bg-line': #eaeaea,
+  'bg-line-light': #eaeaea,
+  'bg-line-dark': #2a2a2a,
 );

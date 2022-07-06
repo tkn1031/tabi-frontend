@@ -7,7 +7,7 @@ export default class {
    * @param {String} params.inviewClass 交差した要素に付加
    * するクラス
    */
-  constructor({ targetSelector = '.js-intersection', option = {}, inviewClass = 'is-inview' } = {}) {
+  constructor({ targetSelector = '.js-intersection', option = {}, inviewClass = 'is-inview', isIntersectingCallback = () => {}, isOutIntersectingCallback = () => {} } = {}) {
     const targets = document.querySelectorAll(targetSelector)
     if (targets.length === 0) {
       return
@@ -19,6 +19,10 @@ export default class {
     this.option = option
     // @ts-ignore
     this.inviewClass = inviewClass
+    // @ts-ignore
+    this.isIntersectingCallback = isIntersectingCallback
+    // @ts-ignore
+    this.isOutIntersectingCallback = isOutIntersectingCallback
 
     this.init()
   }
@@ -29,6 +33,12 @@ export default class {
         if (entry.isIntersecting) {
           // @ts-ignore
           entry.target.classList.add(this.inviewClass)
+          // @ts-ignore
+          this.isIntersectingCallback()
+        }
+        if (!entry.isIntersecting) {
+          // @ts-ignore
+          this.isOutIntersectingCallback()
         }
       })
     // @ts-ignore

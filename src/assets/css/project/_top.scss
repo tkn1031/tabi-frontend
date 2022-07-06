@@ -3,7 +3,7 @@
 @use "../foundation" as f;
 
 $gap-between-section-sm: 8rem;
-$gap-intro-section-first-sm: 10rem;
+$gap-intro-section-first-sm: 8rem;
 $font-size-heading-jp-sm: 2.2rem;
 $font-size-heading-en-sm: 3rem;
 
@@ -169,7 +169,7 @@ $font-size-heading-en-lg: 3.8rem;
   @include mq.mq(lg) {
     right: 0;
     transform: rotate(13deg);
-    margin-top: 13%;
+    font-size: 6rem;
     > span {
       display: inline;
       &:nth-child(n + 2) {

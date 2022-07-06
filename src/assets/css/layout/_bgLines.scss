@@ -5,13 +5,14 @@
   width: 1px;
   height: 100%;
   background-color: var(--color-bg-line);
+  transition: background-color 0.8s;
 }
 
 .l-bg-lines {
   position: fixed;
   top: 0;
   left: 50%;
-  z-index: -1;
+  z-index: f.$z-index-bgLines;
   transform: translateX(-50%);
   width: f.$content-width-sm;
   height: 100%;

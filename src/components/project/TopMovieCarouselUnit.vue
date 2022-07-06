@@ -1,5 +1,5 @@
 <template>
-  <div class="top-movie-carouselUnit">
+  <div class="js-intersection top-movie-carouselUnit">
     <swiper
       ref="carousel"
       class="swiper top-movie-carouselUnit__carousel"
@@ -7,8 +7,8 @@
       @ready="ready"
       @slideChangeTransitionEnd="getActiveCarouselIndex"
     >
-      <swiper-slide v-for="(item, idx) in data" :key="idx" class="top-movie-carouselUnit__item">
-        <a :href="item.url" class="c-card-movie">
+      <swiper-slide v-for="(item, idx) in data" :key="idx" class="top-movie-carouselUnit__carousel__item">
+        <a :href="item.url" class="c-card-movie top-movie-carouselUnit__carousel__link">
           <div class="c-card-movie__imgWrap">
             <div class="c-card-movie__imgWrap__icon"><svg class="c-icon-play"><use xlink:href="#play"></use></svg></div>
             <img class="c-card-movie__imgWrap__img" :src="item.imgUrl">
@@ -40,6 +40,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
+// @ts-ignore
+import IntersectionObserverWrapper from '@/assets/js/modules/intersectionObserverWrapper'
 
 export default Vue.extend({
   name: 'TopMovieCarouselUnit',
@@ -67,6 +69,15 @@ export default Vue.extend({
       // @ts-ignore
       return this.$refs.carousel.$swiper
     }
+  },
+  mounted() {
+    const io = new IntersectionObserverWrapper({
+      option: {
+        root: null,
+        rootMargin: '0px 0px -20% 0px',
+        threshold: 0
+      },
+    })
   },
   methods: {
     ready() {

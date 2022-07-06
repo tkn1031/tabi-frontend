@@ -5,7 +5,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: f.$z-index-header;
   width: 100%;
   color: var(--color-white);
   mix-blend-mode: difference;
@@ -21,8 +21,8 @@
   &.is-scroll {
     .l-header__inner {
       @include mq.mq(md) {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
       }
     }
   }
@@ -45,6 +45,7 @@
     column-gap: 2rem;
     &__link {
       position: relative;
+      display: block;
       font-size: 1rem;
       font-weight: 600;
       color: var(--color-white);
