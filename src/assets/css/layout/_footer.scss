@@ -14,7 +14,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--color-black);
+    background-color: var(--color-body-dark);
   }
   &__inner {
     position: relative;
@@ -39,7 +39,7 @@
     margin-bottom: 5rem;
     line-height: 1;
     font-family: f.$font-family-brandon-grotesque;
-    font-size: 3rem;
+    font-size: 3.6rem;
     font-weight: 600;
     color: var(--color-white);
     @include mq.mq(lg) {
@@ -62,8 +62,9 @@
     &__link {
       position: relative;
       display: inline-block;
-      font-size: 1.2rem;
+      font-family: var(--font-family-base-en);
       font-weight: 600;
+      font-size: 1.8rem;
       color: var(--color-white);
       transition: color .3s;
       > span {

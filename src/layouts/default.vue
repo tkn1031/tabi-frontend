@@ -1,6 +1,6 @@
 <template>
   <div class="l-wrap">
-    <ComponentSvgInclude />
+    <PartsSvgInclude />
     <LayoutBgLine />
     <LayoutHeader />
     <main class="l-main">

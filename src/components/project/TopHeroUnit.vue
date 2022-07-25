@@ -39,7 +39,7 @@
       <div class="top-heroUnit__carouselMask" :class="{'show': show}"></div>
     </div>
     <div class="top-heroUnit__scrolldown">
-      <ComponentScrollDown />
+      <PartsScrollDown />
     </div>
   </div>
 </template>

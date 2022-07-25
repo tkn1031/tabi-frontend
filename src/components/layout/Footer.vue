@@ -5,12 +5,12 @@
         <div class="l-footer__logo">tabi360</div>
         <nav class="l-footer__sitenav">
           <ul class="l-footer__navList">
-            <li class="l-footer__navList__item"><nuxt-link class="l-footer__navList__link" to="/"><span>HOME</span></nuxt-link></li>
-            <li class="l-footer__navList__item"><nuxt-link class="l-footer__navList__link" to="/blog/"><span>ブログを読む</span></nuxt-link></li>
-            <li class="l-footer__navList__item"><nuxt-link class="l-footer__navList__link" to="/photo/"><span>写真を見る</span></nuxt-link></li>
-            <li class="l-footer__navList__item"><nuxt-link class="l-footer__navList__link" to="/movie/"><span>動画を見る</span></nuxt-link></li>
-            <li class="l-footer__navList__item"><nuxt-link class="l-footer__navList__link" to="/about/"><span>サイトについて</span></nuxt-link></li>
-            <li class="l-footer__navList__item"><nuxt-link class="l-footer__navList__link" to="/contact/"><span>お問い合わせ</span></nuxt-link></li>
+            <li class="l-footer__navList__item"><nuxt-link class="l-footer__navList__link" to="/"><span>Home</span></nuxt-link></li>
+            <li class="l-footer__navList__item"><nuxt-link class="l-footer__navList__link" to="/blog/"><span>Blog</span></nuxt-link></li>
+            <li class="l-footer__navList__item"><nuxt-link class="l-footer__navList__link" to="/photo/"><span>Photo</span></nuxt-link></li>
+            <li class="l-footer__navList__item"><nuxt-link class="l-footer__navList__link" to="/movie/"><span>Movie</span></nuxt-link></li>
+            <li class="l-footer__navList__item"><nuxt-link class="l-footer__navList__link" to="/about/"><span>About</span></nuxt-link></li>
+            <li class="l-footer__navList__item"><nuxt-link class="l-footer__navList__link" to="/contact/"><span>Contact</span></nuxt-link></li>
           </ul>
         </nav>
       </div>

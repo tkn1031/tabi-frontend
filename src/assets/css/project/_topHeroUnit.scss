@@ -50,17 +50,17 @@
       margin-top: 3rem;
     }
   }
-  // &__catchLine {
-  //   &:not(:last-child) {
-  //     margin-bottom: 0.2rem;
-  //   }
-  // }
+  &__catchLine {
+    &:not(:last-child) {
+      margin-bottom: 0.125rem;
+    }
+  }
   &__catchText {
     display: inline-block;
     line-height: 1;
     &--en {
-      margin-right: -0.08em;
-      letter-spacing: 0.08em;
+      margin-right: -0.05em;
+      letter-spacing: 0.05em;
       font-family: var(--font-family-base-en);
       font-weight: 700;
       font-size: 4.4rem;

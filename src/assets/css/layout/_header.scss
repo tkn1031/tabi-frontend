@@ -1,19 +1,27 @@
 @use "../foundation" as f;
 @use '../../../../node_modules/sass-mq/mq';
 
+@keyframes menuBarMiddleActive {
+  100% {
+    height: 0;
+  }
+}
+
 .l-header {
   position: fixed;
   top: 0;
   left: 0;
   z-index: f.$z-index-header;
   width: 100%;
-  color: var(--color-white);
-  mix-blend-mode: difference;
+  @include mq.mq(lg) {
+    color: var(--color-white);
+    mix-blend-mode: difference;
+  }
   &__inner {
-    padding: 1.5rem 5vw;
+    display: flex;
+    align-items: center;
+    padding: 1.6rem 5vw;
     @include mq.mq(md) {
-      display: flex;
-      align-items: center;
       padding: 3rem 3vw;
       transition: 0.4s padding;
     }
@@ -27,29 +35,75 @@
     }
   }
   &__heading {
+    z-index: 1;
     margin-right: auto;
     line-height: 1;
     font-family: f.$font-family-brandon-grotesque;
     font-size: 2.8rem;
     font-weight: 600;
-    > sup {
-      vertical-align: super;
-      font-size: 0.5em;
+    transition: color .4s;
+    .is-menuOpen & {
+      color: var(--color-white);
     }
     @include mq.mq(md) {
       font-size: 1.8rem;
     }
   }
-  &__navList {
+  &__nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateX(100%);
     display: flex;
-    column-gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    padding-right: 5vw;
+    padding-left: 5vw;
+    width: 100%;
+    background-color: rgba(var(--color-black-rgb), 1);
+    transition: transform .4s;
+    .is-menuOpen & {
+      transform: translateX(0);
+    }
+    @include mq.mq(lg) {
+      position: static;
+      transform: translateX(0);
+      display: block;
+      padding-right: 0;
+      padding-left: 0;
+      width: auto;
+      background-color: transparent;
+    }
+  }
+  &__navList {
+    @include mq.mq(lg) {
+      display: flex;
+      column-gap: 2rem;
+    }
+    &__item {
+      &:not(:last-child) {
+        margin-bottom: 3.2rem;
+      }
+      @include mq.mq(lg) {
+        &:not(:last-child) {
+          margin-bottom: 0;
+        }
+      }
+    }
     &__link {
       position: relative;
-      display: block;
-      font-size: 1rem;
+      display: inline-block;
+      font-family: var(--font-family-base-en);
       font-weight: 600;
+      font-size: 2.6rem;
       color: var(--color-white);
       transition: color .3s;
+      @include mq.mq(lg) {
+        display: block;
+        font-size: 1.2rem;
+      }
       > span {
         display: block;
         margin-right: -0.1em;
@@ -59,10 +113,10 @@
         content: '';
         display: block;
         position: absolute;
-        left: -5%;
+        left: -10%;
         bottom: 0;
         z-index: -1;
-        width: 110%;
+        width: 120%;
         height: 100%;
         background-color: var(--color-white);
         transform: scale(0, 1);
@@ -83,6 +137,49 @@
             transform: scale(1, 1);
             transform-origin: left top;
           }
+        }
+      }
+    }
+  }
+  &__menuBtn {
+    position: relative;
+    width: 2.8rem;
+    height: 1.6rem;
+    cursor: pointer;
+    @include mq.mq(lg) {
+      display: none;
+    }
+    &__bar {
+      transition: transform .3s, opacity .3s, left .3s, height .3s, background-color .4s;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      &:nth-of-type(1) {
+        top: 0;
+      }
+      &:nth-of-type(2) {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      &:nth-of-type(3) {
+        bottom: 0;
+      }
+    }
+    &.active {
+      .l-header__menuBtn__bar {
+        background-color: var(--color-white);
+        &:nth-of-type(1) {
+          transform: translateY(0.7rem) rotate(-45deg);
+        }
+        &:nth-of-type(2) {
+          left: 50%;
+          opacity: 0;
+          animation: menuBarMiddleActive .6s forwards;
+        }
+        &:nth-of-type(3) {
+          transform: translateY(-0.7rem) rotate(45deg);
         }
       }
     }

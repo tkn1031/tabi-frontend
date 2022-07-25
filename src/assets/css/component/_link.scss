@@ -1,8 +1,73 @@
 @use '../../../../node_modules/sass-mq/mq';
 @use "../foundation" as f;
 
+.c-link-arrow {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1rem;
+  &__text {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    margin-right: -0.1em;
+    letter-spacing: 0.1em;
+  }
+  &__icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.65em;
+    // width: 3.2em;
+    // height: 3.2em;
+    transition: transform 0.3s;
+    // &::before {
+    //   content: "";
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   z-index: 1;
+    //   display: block;
+    //   width: 100%;
+    //   height: 100%;
+    //   border-radius: 50%;
+    //   background-color: rgba(var(--color-theme02-rgb), 0.5);
+    //   transition: transform 0.3s;
+    // }
+    > svg {
+      position: relative;
+      z-index: 2;
+      width: 1em;
+      height: 1em;
+    }
+  }
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: none;
+      .c-button-arrow__icon {
+        transform: translateX(0.4em);
+        // &::before {
+        //   transform-origin: center center;
+        //   transform: scale(1.2);
+        // }
+      }
+    }
+  }
+}
+
 .c-link-photo {
   display: inline-block;
+  @include mq.mq(lg) {
+    opacity: 0.15;
+    // color: rgba(var(--color-base-rgb), 0.15);
+    transition: opacity .3s;
+    @media (hover: hover) {
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
   &:hover {
     text-decoration: none;
   }
@@ -24,21 +89,26 @@
     }
   }
   &__heading {
+    z-index: 1;
     margin-left: 1rem;
     font-weight: 600;
     font-size: 2.8rem;
     @include mq.mq(lg) {
       font-size: 3.8rem;
     }
-    &__large {
+    &__main {
       margin-bottom: 0.5rem;
       width: fit-content;
       color: rgba(var(--color-base-rgb), 0);
       background-position: top center;
       background-size: cover;
       background-clip: text;
+      @include mq.mq(lg) {
+        color: rgba(var(--color-base-rgb), 1);
+        background-size: 0;
+      }
     }
-    &__small {
+    &__sub {
       display: block;
       width: fit-content;
       font-size: 0.35em;
@@ -46,10 +116,23 @@
       background-position: bottom center;
       background-size: cover;
       background-clip: text;
-        // @include mq.mq(xl) {
-      //   display: inline;
-      //   margin-left: 1em;
-      // }
+      @include mq.mq(lg) {
+        color: rgba(var(--color-base-rgb), 1);
+        background-size: 0;
+      }
     }
+  }
+  &__img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    transform: translate(0, -50%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    width: 40rem;
+    aspect-ratio: 3 / 2;
+    background-size: cover;
   }
 }

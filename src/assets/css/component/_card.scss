@@ -34,7 +34,7 @@ $font-weight-article-time: 400;
     font-family: var(--font-family-base-number);
     font-size: 1.8rem;
     @include mq.mq(lg) {
-      font-size: 3.4rem;
+      font-size: 3rem;
     }
   }
   &__imgWrap {

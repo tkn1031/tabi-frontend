@@ -31,10 +31,6 @@
     </swiper>
     <button slot="button-prev" class="swiper-button-prev"><svg class="c-icon-arrowLeft"><use xlink:href="#arrowLeft"></use></svg></button>
     <button slot="button-next" class="swiper-button-next"><svg class="c-icon-arrowRight"><use xlink:href="#arrowRight"></use></svg></button>
-    <!-- <div class="top-movie-carouselUnit__controller">
-      <button slot="button-prev" class="swiper-button-prev"><svg class="c-icon-arrowLeft"><use xlink:href="#arrowLeft"></use></svg></button>
-      <button slot="button-next" class="swiper-button-next"><svg class="c-icon-arrowRight"><use xlink:href="#arrowRight"></use></svg></button>
-    </div> -->
   </div>
 </template>
 

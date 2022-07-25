@@ -26,10 +26,11 @@
 
     <section id="blog" class="js-section-blog top-blog-section">
       <div class="l-inner">
-        <div class="top-blog-section-header">
-          <h2 class="js-intersection c-mask top-blog-heading"><span>ブログ<span class="top-blog-heading__verb">を読む</span></span></h2>
-          <div class="top-blog-heading-en"><span>Read Blog</span></div>
-        </div>
+        <ProjectTopSectionHeader
+          title="Blog"
+          subtitle="ブログ"
+          :modifier-classes="['top-blog-section-header']"
+        />
         <div class="top-blog-content">
           <div class="c-list-blog top-blog-list">
             <article v-for="(blog, idx) in blogList" :key="idx" class="c-list-blog__item top-blog-list__item">
@@ -49,7 +50,11 @@
             </article>
           </div>
           <div class="top-blog-more">
-            <nuxt-link class="c-button-arrow top-more-button " to="/blog/"><span class="c-button-arrow__text">ブログ一覧を見る</span><span class="c-button-arrow__icon"><svg class="c-icon-arrowRight"><use xlink:href="#arrowRight"></use></svg></span></nuxt-link>
+            <LinkArrow
+              text="View More"
+              link="/blog/"
+              :modifier-classes="['top-more-button']"
+            />
           </div>
         </div>
       </div>
@@ -58,24 +63,30 @@
 
     <section id="photo" class="js-section-photo top-photo-section">
       <div class="l-inner">
-        <div class="top-photo-section-header">
-          <h2 class="js-intersection c-mask top-photo-heading"><span>写真<span class="top-blog-heading__verb">を見る</span></span></h2>
-          <div class="top-photo-heading-en"><span>View Photo</span></div>
-        </div>
+        <ProjectTopSectionHeader
+          title="Photo"
+          subtitle="写真"
+          :modifier-classes="['top-photo-section-header']"
+        />
         <div class="top-photo-content">
           <ul class="c-list-linkPhoto">
             <li v-for="photo in photos" :key="photo.id" class="c-list-linkPhoto__item">
-              <nuxt-link class="c-link-photo" :to="`/photo/${photo.id}`">
-                <div class="c-link-photo__content">
+              <nuxt-link ref="linkPhoto" class="c-link-photo" :to="`/photo/${photo.id}`">
+                <div ref="linkPhotoContent" class="c-link-photo__content">
                   <span class="c-link-photo__year">{{ photo.visitYear }}</span>
-                  <h3 class="c-link-photo__heading"><span class="js-intersection c-mask c-link-photo__heading__large" :style="`background-image: url(${photo.imgUrl})`">{{ photo.title }}</span><span class="js-intersection c-mask c-link-photo__heading__small" :style="`background-image: url(${photo.imgUrl})`">{{ photo.visit | stringJoin('／') }}</span></h3>
+                  <h3 class="c-link-photo__heading"><span class=" c-link-photo__heading__main" :style="`background-image: url(${photo.imgUrl})`">{{ photo.title }}</span><span class=" c-link-photo__heading__sub" :style="`background-image: url(${photo.imgUrl})`">{{ photo.visit | stringJoin('／') }}</span></h3>
+                  <div ref="linkPhotoThumb" class="c-link-photo__img" :style="`background-image: url(${photo.imgUrl})`"></div>
                 </div>
               </nuxt-link>
             </li>
           </ul>
         </div>
         <div class="top-photo-more">
-          <nuxt-link class="c-button-arrow top-more-button " to="/photo/"><span class="c-button-arrow__text">写真一覧を見る</span><span class="c-button-arrow__icon"><svg class="c-icon-arrowRight"><use xlink:href="#arrowRight"></use></svg></span></nuxt-link>
+          <LinkArrow
+            text="View More"
+            link="/photo/"
+            :modifier-classes="['top-more-button']"
+          />
         </div>
       </div>
     </section>
@@ -83,16 +94,21 @@
 
     <section id="movie" class="js-section-movie top-movie-section">
       <div class="l-inner">
-        <div class="top-movie-section-header">
-          <h2 class="js-intersection c-mask top-movie-heading"><span>動画<span class="top-blog-heading__verb">を見る</span></span></h2>
-          <div class="top-movie-heading-en"><span>Watch Movie</span></div>
-        </div>
+        <ProjectTopSectionHeader
+          title="Movie"
+          subtitle="動画"
+          :modifier-classes="['top-movie-section-header']"
+        />
         <div class="top-movie-content">
           <div class="top-movie-carouselContainer">
             <ProjectTopMovieCarouselUnit :option="swiperMovieOption" :data="movieList" />
           </div>
           <div class="top-movie-more">
-            <nuxt-link class="c-button-arrow top-more-button " to="/movie/"><span class="c-button-arrow__text">動画一覧を見る</span><span class="c-button-arrow__icon"><svg class="c-icon-arrowRight"><use xlink:href="#arrowRight"></use></svg></span></nuxt-link>
+            <LinkArrow
+              text="View More"
+              link="/movie/"
+              :modifier-classes="['top-more-button']"
+            />
           </div>
         </div>
       </div>
@@ -102,6 +118,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { gsap } from 'gsap'
 // @ts-ignore
 import IntersectionObserverWrapper from '@/assets/js/modules/intersectionObserverWrapper'
 
@@ -129,7 +146,7 @@ export default Vue.extend({
       ],
       photos: [
         {
-          id: '3',
+          id: '5',
           entryNo: '3',
           date: '2021.01.01',
           visitYear: '2021',
@@ -142,7 +159,7 @@ export default Vue.extend({
           imgAlt: 'サムネ01'
         },
         {
-          id: '2',
+          id: '4',
           entryNo: '2',
           date: '2021.01.01',
           visitYear: '2021',
@@ -155,7 +172,7 @@ export default Vue.extend({
           imgAlt: 'サムネ02'
         },
         {
-          id: '1',
+          id: '3',
           entryNo: '1',
           date: '2021.01.01',
           visitYear: '2021',
@@ -168,6 +185,7 @@ export default Vue.extend({
           imgAlt: 'サムネ03'
         },
         {
+          id: '2',
           date: '2021.01.01',
           visitYear: '2021',
           title: '沖縄・石垣島',
@@ -179,6 +197,7 @@ export default Vue.extend({
           imgAlt: 'サムネ04'
         },
         {
+          id: '1',
           date: '2021.01.01',
           visitYear: '2021',
           title: 'トルコ',
@@ -369,17 +388,37 @@ export default Vue.extend({
         }
       },
     })
+
+    //  @ts-ignore
+    this.$refs.linkPhoto.forEach((link, idx) => {
+      //  @ts-ignore
+      const thumbElem = this.$refs.linkPhotoThumb[idx]
+
+      //  @ts-ignore
+      link.$el.addEventListener('mouseenter', (eve) => {
+        gsap.to(thumbElem, {
+          opacity: 0.5,
+          visibility: 'visible'
+        })
+      })
+
+      link.$el.addEventListener('mouseleave', () => {
+        gsap.to(thumbElem, {
+          autoAlpha: 0
+        })
+      })
+
+      //  @ts-ignore
+      link.$el.addEventListener('mousemove', (eve) => {
+        gsap.to(thumbElem, {
+          duration: 2, // 単位:秒
+          x: eve.clientX + 80,
+          y: eve.clientY,
+          ease: 'Power2.easeOut',
+        })
+      })
+    })
   },
-  methods: {
-    /**
-     * 縦画像かを判定する
-     * @param {Number} width 幅
-     * @param {Number} height 高さ
-     * @return {Boolean} 縦画像か
-     */
-    isVerticalImage(width: number, height: number) {
-      return width / height < 1
-    },
-  }
+  methods: {}
 })
 </script>
