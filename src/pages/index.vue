@@ -400,6 +400,10 @@ export default Vue.extend({
           opacity: 0.5,
           visibility: 'visible'
         })
+        gsap.set(thumbElem, {
+          x: eve.clientX + 80,
+          y: eve.clientY,
+        })
       })
 
       link.$el.addEventListener('mouseleave', () => {
