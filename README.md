@@ -1,4 +1,4 @@
-# tabi
+# tabi-frontend
 
 ## Build Setup
 
